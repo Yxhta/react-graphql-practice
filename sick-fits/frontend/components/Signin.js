@@ -5,13 +5,12 @@ import Form from './styles/Form';
 import Error from './ErrorMessage';
 import { CURRENT_USER_QUERY } from './User';
 
-const SIGNUP_MUTATION = gql`
-  mutation SIGNUP_MUTATION(
+const SIGNIN_MUTATION = gql`
+  mutation SIGNIN_MUTATION(
     $email: String!
-    $name: String!
     $password: String!
   ) {
-    signup(email: $email, name: $name, password: $password) {
+    signin(email: $email, name: $name, password: $password) {
       id
       email
       name
@@ -19,7 +18,7 @@ const SIGNUP_MUTATION = gql`
   }
 `;
 
-class Signup extends React.Component {
+class Signin extends React.Component {
   state = {
     name: '',
     password: '',
@@ -33,7 +32,7 @@ class Signup extends React.Component {
   render() {
     return (
       <Mutation
-        mutation={SIGNUP_MUTATION}
+        mutation={SIGNIN_MUTATION}
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
@@ -59,16 +58,6 @@ class Signup extends React.Component {
                   onChange={this.saveToState}
                 />
               </label>
-              <label htmlFor="name">
-                Name
-                <input
-                  type="name"
-                  name="name"
-                  placeholder="name"
-                  value={this.state.name}
-                  onChange={this.saveToState}
-                />
-              </label>
               <label htmlFor="password">
                 Password
                 <input
@@ -80,7 +69,7 @@ class Signup extends React.Component {
                 />
               </label>
 
-              <button type="submit">Sign Up</button>
+              <button type="submit">Sign In</button>
             </fieldset>
           </Form>
         )}
@@ -89,4 +78,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default Signin;

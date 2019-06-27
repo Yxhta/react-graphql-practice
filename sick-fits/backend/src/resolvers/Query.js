@@ -13,7 +13,7 @@ const Query = {
     }
     return ctx.db.query.user(
       {
-        where: { id: request.userId },
+        where: { id: ctx.request.userId },
       },
       info
     );

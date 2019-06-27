@@ -4,7 +4,7 @@ import User from './User';
 
 const Nav = () => (
   <User>
-    {({ data: { me } }) => (
+    {({ data: { me } }) => {
       <NavStyles>
         <Link href="/items">
           <a>Shop</a>
@@ -13,9 +13,6 @@ const Nav = () => (
           <>
             <Link href="/sell">
               <a>Sell</a>
-            </Link>
-            <Link href="/signup">
-              <a>Signup</a>
             </Link>
             <Link href="/orders">
               <a>Orders</a>
@@ -31,7 +28,7 @@ const Nav = () => (
           </Link>
         )}
       </NavStyles>
-    )}
+    }}
   </User>
 );
 
